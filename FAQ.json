@@ -1,0 +1,43 @@
+[
+  {
+    "question": "What is an AI chatbot?",
+    "answer": "An AI chatbot is a program that uses artificial intelligence to understand questions and provide helpful responses."
+  },
+  {
+    "question": "How do I start a conversation with the chatbot?",
+    "answer": "Simply type your question or message into the chat box and press enter. The chatbot will respond automatically."
+  },
+  {
+    "question": "What kinds of questions can I ask?",
+    "answer": "You can ask about instructions, explanations, troubleshooting, or general information. The chatbot works best with clear, specific questions."
+  },
+  {
+    "question": "What should I do if the chatbot doesn't understand my question?",
+    "answer": "Try rephrasing your question using simpler language or adding more detail."
+  },
+  {
+    "question": "Can the chatbot remember previous messages?",
+    "answer": "Most chatbots can track the current conversation, but they may not store long-term memory unless designed to do so."
+  },
+  {
+    "question": "Is my information safe when using the chatbot?",
+    "answer": "Chatbots typically follow privacy and security guidelines, but you should avoid sharing sensitive personal information."
+  },
+  {
+    "question": "Can the chatbot perform tasks for me?",
+    "answer": "Some chatbots can perform tasks like answering questions, generating text, or guiding you through steps, depending on their design."
+  },
+  {
+    "question": "How accurate are the chatbot's answers?",
+    "answer": "Chatbots aim to be accurate, but responses may vary. Always double-check important information."
+  },
+  {
+    "question": "Can I ask follow-up questions?",
+    "answer": "Yes, you can ask follow-up questions to get more details or clarify something."
+  },
+  {
+    "question": "Do I need an account to use the chatbot?",
+    "answer": "Some chatbots require an account, while others are available for public use without registration."
+  }
+]
+
