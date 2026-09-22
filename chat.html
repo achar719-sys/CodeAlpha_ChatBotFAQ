@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Chatbot</title>
+    <style>
+    body { font-family: Arial; background: #f4f4f4; }
+
+    #chatbox {
+        width: 500px; margin: 50px auto; background: white;
+        padding: 20px; border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+   #messages {
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #fafafa;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+    /* USER bubble */
+   .user {
+    background: #cce5ff;
+    color: #003366;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 10px 0;
+    max-width: 70%;
+    align-self: flex-end;
+    text-align: right;
+    animation: fadeIn 0.35s ease-in-out;
+}
+
+.bot {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 10px 0;
+    max-width: 70%;
+    align-self: flex-start;
+    text-align: left;
+    animation: fadeIn 0.35s ease-in-out;
+}
+
+.bot-row {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+    #input { width: 80%; padding: 10px; }
+    #send { padding: 10px; }
+    @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+    </style>
+</head>
+<body>
+
+<div id="chatbox">
+    <h2>AI Chatbot</h2>
+    <div id="messages"></div>
+<div id="typing" style="display:none; color:#888; font-style:italic; margin:10px 0;">
+    Bot is typing...
+</div>
+
+    <input id="input" type="text" placeholder="Type your message...">
+    <button id="send">Send</button>
+</div>
+
+<script>
+document.getElementById("send").onclick = function() {
+    let text = document.getElementById("input").value;
+    if (!text) return;
+
+    let messages = document.getElementById("messages");
+    let typing = document.getElementById("typing");
+
+    // Show user bubble
+    messages.innerHTML += `<div class='user'>${text}</div>`;
+    document.getElementById("input").value = "";
+
+    // Show typing animation
+    typing.style.display = "block";
+
+    fetch("/ask", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({message: text})
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        // Hide typing animation
+        typing.style.display = "none";
+
+        // Show bot bubble
+messages.innerHTML += `
+    <div class="bot-row">
+        <img src="/static/bot.png" class="avatar">
+        <div class="bot">${data.response}</div>
+    </div>
+`;
+        messages.scrollTop = messages.scrollHeight;
+    });
+};
+</script>
+
+</body>
+</html>
